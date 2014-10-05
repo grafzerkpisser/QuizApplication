@@ -34,7 +34,7 @@ public class Datum implements Comparable<Datum> {
 			throw new IllegalArgumentException("Datum moet ingegeven worden in het formaat \"DD/MM/JJJJ\".");
 		}
 
-		String subJaar = datum.substring(6, 9);
+		String subJaar = datum.substring(6, 10);
 		int berekendJaar;
 
 		try {
@@ -46,7 +46,7 @@ public class Datum implements Comparable<Datum> {
 			throw new IllegalArgumentException("Jaar moet numeriek zijn en liggen tussen 1 en 9999.");
 		}
 
-		String subMaand = datum.substring(3, 4);
+		String subMaand = datum.substring(3, 5);
 		int berekendeMaand;
 
 		try {
@@ -59,7 +59,7 @@ public class Datum implements Comparable<Datum> {
 			throw new IllegalArgumentException("Maand moet numeriek zijn en liggen tussen 1 en 12.");
 		}
 
-		String subDag = datum.substring(0, 1);
+		String subDag = datum.substring(0, 2);
 		int berekendeDag;
 		int maxDagen = getAantalDagenInMaand(berekendeMaand, isSchrikkeljaar(berekendJaar));
 
