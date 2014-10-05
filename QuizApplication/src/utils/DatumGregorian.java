@@ -8,7 +8,6 @@ import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Locale;
 
 public class DatumGregorian implements Comparable<DatumGregorian> {
 
@@ -109,15 +108,12 @@ public class DatumGregorian implements Comparable<DatumGregorian> {
    }
 	
 	public void VeranderDatum(int daysToAdd) {
-	
+		//TODO
     }
 	
 	public DatumGregorian veranderDatum(int daysToAdd){
-		 Calendar calendar = Calendar.getInstance();
-		 calendar.setTime(this.gregDatum.getTime());
-	     calendar.add(Calendar.DAY_OF_YEAR, daysToAdd);
-	     
-	     return new DatumGregorian(calendar.YEAR, calendar.MONTH + 1, calendar.DAY_OF_MONTH);
+		 //TODO
+		return null;
 	}
 	
 
