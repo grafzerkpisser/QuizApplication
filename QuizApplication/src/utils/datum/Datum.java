@@ -1,4 +1,4 @@
-package utils;
+package utils.datum;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -9,13 +9,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class DatumGregorian implements Comparable<DatumGregorian> {
+public class Datum implements Comparable<Datum> {
 
-	public DatumGregorian() {
+	public Datum() {
 		gregDatum = (GregorianCalendar) GregorianCalendar.getInstance();
 	}
 
-	public DatumGregorian(int dag, int maand, int jaar) throws IllegalArgumentException {
+	public Datum(int dag, int maand, int jaar) throws IllegalArgumentException {
 		try {
 			gregDatum = new GregorianCalendar(jaar, maand -1, dag);
 		} catch (IllegalArgumentException ex) {
@@ -23,7 +23,7 @@ public class DatumGregorian implements Comparable<DatumGregorian> {
 		}
 	}
 
-	public DatumGregorian(String d) throws IllegalArgumentException {
+	public Datum(String d) throws IllegalArgumentException {
 		try {
 			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 			Date date = df.parse(d);
@@ -38,7 +38,7 @@ public class DatumGregorian implements Comparable<DatumGregorian> {
 		}
 	}
 
-	public DatumGregorian(DatumGregorian d) {
+	public Datum(Datum d) {
 		gregDatum = d.getDatum();
 	}
 
@@ -75,16 +75,16 @@ public class DatumGregorian implements Comparable<DatumGregorian> {
 			return true;
 		}
 
-		if (!(obj instanceof DatumGregorian)) {
+		if (!(obj instanceof Datum)) {
 			return false;
 		}
 
-		DatumGregorian d = (DatumGregorian) obj;
+		Datum d = (Datum) obj;
 
 		return compareTo(d) == 0;
 	}
 
-	private LocalDate getLocalDate(DatumGregorian d){
+	private LocalDate getLocalDate(Datum d){
 		Calendar cal = Calendar.getInstance();
 	    cal.setTime(d.getDatum().getTime());
 	    int year = cal.get(Calendar.YEAR);
@@ -92,15 +92,15 @@ public class DatumGregorian implements Comparable<DatumGregorian> {
 	    int day = cal.get(Calendar.DAY_OF_MONTH);
 		return LocalDate.of(year, month + 1, day);
 	}
-	public int verschilInJaren(DatumGregorian d) {
+	public int verschilInJaren(Datum d) {
 		int result = Period.between(getLocalDate(d), getLocalDate(this)).getYears();
 		return result > 0 ? result:result*-1;
 	}
-	public int verschilInMaanden(DatumGregorian d){
+	public int verschilInMaanden(Datum d){
 		int result = Period.between(getLocalDate(d), getLocalDate(this)).getMonths();
 		return result > 0 ? result:result*-1;
 	}
-	public int verschilInDagen(DatumGregorian d){
+	public int verschilInDagen(Datum d){
 			   
 		Date d1 = this.gregDatum.getTime();
 		Date d2 = d.getDatum().getTime();
@@ -111,18 +111,18 @@ public class DatumGregorian implements Comparable<DatumGregorian> {
 		//TODO
     }
 	
-	public DatumGregorian veranderDatum(int daysToAdd){
+	public Datum veranderDatum(int daysToAdd){
 		 //TODO
 		return null;
 	}
 	
 
 	@Override
-	public int compareTo(DatumGregorian d) {
+	public int compareTo(Datum d) {
 		return d.getDatum().compareTo(this.gregDatum);
 	}
 
-	public boolean kleinerDan(DatumGregorian d) {
+	public boolean kleinerDan(Datum d) {
 		return (this.compareTo(d) == -1) ? true : false;
 	}
 
