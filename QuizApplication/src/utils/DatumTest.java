@@ -10,7 +10,7 @@ import java.util.Calendar;
 import org.junit.Before;
 import org.junit.Test;
 
-import utils.datum.Datum;
+import utils.datumScratch.Datum;
 
 public class DatumTest {
 
@@ -149,7 +149,7 @@ public class DatumTest {
 	public void datumGregorian_verschilInMaanden_Aanvaard() {
 		Datum d1 = new Datum(1, 3, 2007);
 		Datum d2 = new Datum(3, 1, 2009);
-		assertEquals(10, d1.verschilInMaanden(d2));
+		assertEquals(22, d1.verschilInMaanden(d2));
 	}
 
 	@Test
@@ -161,9 +161,9 @@ public class DatumTest {
 
 	@Test
 	public void datumGregorian_veranderDatum_object_Aanvaard() {
-		Datum d1 = new Datum(1, 3, 2007);
-		Datum d2 = d1.veranderDatum(2500);
-		assertEquals("2014/1/3", d2.getDatumInAmerikaansFormaat());
+		Datum d1 = new Datum(1, 1, 2000);
+		Datum d2 = d1.veranderDatum(365);
+		assertEquals("2000/12/30", d2.getDatumInAmerikaansFormaat());
 	}
 
 }

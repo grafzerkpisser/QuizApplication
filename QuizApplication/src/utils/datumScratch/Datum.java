@@ -225,6 +225,15 @@ public class Datum implements Comparable<Datum> {
 		int jaar = (datum400Jaar * 400) + (datum100Jaar * 100) + (datum4Jaar * 4) + datumJaar;
 
 		if (restDagen == 0) {
+			if (isSchrikkeljaar(jaar)) {
+				restDagen = aantalDagenPerSchrikkelJaar;
+			} else {
+				restDagen = aantalDagenPerGewoonJaar;
+			}
+			jaar--;
+		}
+
+		if (restDagen == 0) {
 			aantalDagen = 31;
 			month = 12;
 			jaar--;
@@ -232,9 +241,9 @@ public class Datum implements Comparable<Datum> {
 			boolean monthFound = false;
 
 			while (monthFound == false) {
-				int aantalDagenInMaand = getAantalDagenInMaand(month, datumJaar == 3);
+				int aantalDagenInMaand = getAantalDagenInMaand(month, isSchrikkeljaar(jaar));
 
-				if (aantalDagenInMaand > restDagen) {
+				if (aantalDagenInMaand >= restDagen) {
 					monthFound = true;
 				} else {
 					restDagen -= aantalDagenInMaand;
@@ -299,7 +308,7 @@ public class Datum implements Comparable<Datum> {
 		 * 4, betekent dit dus dat we uitsluitend met een restwaarde van 0 in een schrikkeljaar kunnen zitten.
 		 */
 
-		int aantalDagen = 0;
+		int aantalDagen = 365;
 
 		int aantal400Jaar = datum.jaar / 400;
 		int rest400 = datum.jaar % 400;
@@ -310,8 +319,8 @@ public class Datum implements Comparable<Datum> {
 
 		int aantalDagen4Jaar = (3 * aantalDagenPerGewoonJaar) + aantalDagenPerSchrikkelJaar;
 
-		aantalDagen = (aantal400Jaar * ((aantalDagen4Jaar * 100) - 3)) + (aantal100Jaar * ((aantalDagen4Jaar * 25) - 1))
-				+ aantal4Jaar * aantalDagen4Jaar;
+		aantalDagen += (aantal400Jaar * ((aantalDagen4Jaar * 100) - 3)) + (aantal100Jaar * ((aantalDagen4Jaar * 25) - 1))
+				+ (aantal4Jaar * aantalDagen4Jaar);
 
 		switch (rest4) {
 		case 0:
