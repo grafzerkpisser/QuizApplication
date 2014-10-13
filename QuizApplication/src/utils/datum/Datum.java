@@ -15,7 +15,15 @@ public class Datum implements Comparable<Datum> {
 
 	public Datum(int dag, int maand, int jaar) throws IllegalArgumentException {
 		try {
-			gregDatum = new GregorianCalendar(jaar, maand - 1, dag);
+			Calendar cal = GregorianCalendar.getInstance();
+			cal.setLenient(false);
+			cal.set(jaar, maand - 1, dag);
+			cal.set(Calendar.HOUR_OF_DAY, 0);
+			//With setLenient the calendar will only accept real dates.
+			//example: 32/02/2014 will not be accepted. 
+			// The setLenient function will only be checked by get methods.
+			cal.getTime();
+			gregDatum = (GregorianCalendar)cal;
 		} catch (IllegalArgumentException ex) {
 			throw new IllegalArgumentException("Vul een correcte jaar, maand en dag in.");
 		}
@@ -24,9 +32,15 @@ public class Datum implements Comparable<Datum> {
 	public Datum(String d) throws IllegalArgumentException {
 		try {
 			String[] parts = d.split("/");
-
-			Calendar cal = new GregorianCalendar(Integer.parseInt(parts[2]), Integer.parseInt(parts[1]) - 1,
+			if(parts.length != 3)
+				throw new IllegalArgumentException("Vul een correcte jaar, maand en dag in, in het volgende formaat: dd/mm/yyyy");
+			Calendar cal = GregorianCalendar.getInstance();
+			cal.setLenient(false);
+			cal.set(Integer.parseInt(parts[2]), Integer.parseInt(parts[1]) - 1,
 					Integer.parseInt(parts[0]));
+			cal.set(Calendar.HOUR_OF_DAY, 0);
+			
+			cal.getTime();
 			gregDatum = (GregorianCalendar) cal;
 		} catch (IllegalArgumentException ex) {
 			throw new IllegalArgumentException("Vul een correcte jaar, maand en dag in, in het volgende formaat: dd/mm/yyyy");
@@ -93,7 +107,7 @@ public class Datum implements Comparable<Datum> {
 	}
 
 	public int verschilInMaanden(Datum d) {
-		int result = Period.between(getLocalDate(d), getLocalDate(this)).getMonths();
+		int result = Period.between(getLocalDate(d), getLocalDate(this)).getMonths() + (Period.between(getLocalDate(d), getLocalDate(this)).getYears() *12) ;
 		return result > 0 ? result : result * -1;
 	}
 
@@ -104,13 +118,14 @@ public class Datum implements Comparable<Datum> {
 		return (int) ((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
 	}
 
-	public void VeranderDatum(int daysToAdd) {
-		// TODO
+	public void veranderDatum(int daysToAdd) {
+		this.gregDatum.add(GregorianCalendar.DAY_OF_MONTH, daysToAdd);
 	}
 
-	public Datum veranderDatum(int daysToAdd) {
-		// TODO
-		return null;
+	public Datum veranderDatumInNieuwObject(int daysToAdd) {
+		Datum d1 = this;
+		d1.gregDatum.add(GregorianCalendar.DAY_OF_MONTH, daysToAdd);
+		return d1;
 	}
 
 	@Override
@@ -124,5 +139,9 @@ public class Datum implements Comparable<Datum> {
 
 	private void setDatum(GregorianCalendar d) {
 		gregDatum = d;
+	}
+	@Override
+	public String toString() {
+		return String.format("%s", this.gregDatum.getTime());
 	}
 }
