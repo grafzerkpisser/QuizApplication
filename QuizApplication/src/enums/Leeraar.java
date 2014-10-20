@@ -1,5 +1,5 @@
 package enums;
-
+//leraar
 public enum Leeraar {
 	Eli(1),
 	Patrick(2),
