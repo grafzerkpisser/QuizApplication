@@ -118,4 +118,9 @@ public class Opdracht implements Comparable<Opdracht> {
 
 	public void wijzigOpdracht() {
 	}
+
+	public void verwijderQuizOpdracht(QuizOpdracht quizOpdracht) {
+		// TODO Auto-generated method stub
+
+	}
 }
