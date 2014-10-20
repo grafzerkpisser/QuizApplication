@@ -6,7 +6,6 @@ import utils.datum.Datum;
 import enums.Leeraar;
 import enums.OpdrachtCategorie;
 
-
 public class Opdracht implements Comparable<Opdracht> {
 	private String vraag;
 	private String juisteAntwoord;
@@ -16,73 +15,73 @@ public class Opdracht implements Comparable<Opdracht> {
 	private Leeraar leeraar;
 	private OpdrachtCategorie opdrachtCategorie;
 	private Datum aanmaakDatum;
-	public void setAanmaakDatum(Datum aanmaakDatum)
-	{
+
+	public void setAanmaakDatum(Datum aanmaakDatum) {
 		this.aanmaakDatum = aanmaakDatum;
 	}
-	public void setVraag(String vraag)
-	{
+
+	public void setVraag(String vraag) {
 		this.vraag = vraag;
 	}
-	public void setJuisteAntwoord(String juisteAntwoord)
-	{
+
+	public void setJuisteAntwoord(String juisteAntwoord) {
 		this.juisteAntwoord = juisteAntwoord;
 	}
-	public void setMaxAantalPogingen(Integer maxAantalPogingen)
-	{
+
+	public void setMaxAantalPogingen(Integer maxAantalPogingen) {
 		this.maxAantalPogingen = maxAantalPogingen;
 	}
-	public void setAntwoordHints(ArrayList<String> antwoordHints)
-	{
+
+	public void setAntwoordHints(ArrayList<String> antwoordHints) {
 		this.antwoordHints = antwoordHints;
 	}
-	public void setMaxAntwoordTijd(Integer maxAntwoordTijd)
-	{
+
+	public void setMaxAntwoordTijd(Integer maxAntwoordTijd) {
 		this.maxAntwoordTijd = maxAntwoordTijd;
 	}
-	public void setLeeraar(Leeraar leeraar)
-	{
+
+	public void setLeeraar(Leeraar leeraar) {
 		this.leeraar = leeraar;
 	}
-	public void setOpdrachtCategorie(OpdrachtCategorie opdrachtCategorie)
-	{
+
+	public void setOpdrachtCategorie(OpdrachtCategorie opdrachtCategorie) {
 		this.opdrachtCategorie = opdrachtCategorie;
 	}
-	public Datum getAanmaakDatum()
-	{
+
+	public Datum getAanmaakDatum() {
 		return aanmaakDatum;
 	}
-	public OpdrachtCategorie getOpdrachtCategorie()
-	{
+
+	public OpdrachtCategorie getOpdrachtCategorie() {
 		return opdrachtCategorie;
 	}
-	public Leeraar getLeeraar()
-	{
+
+	public Leeraar getLeeraar() {
 		return leeraar;
 	}
-	public String getVraag()
-	{
+
+	public String getVraag() {
 		return vraag;
 	}
-	public String getJuisteAntwoord()
-	{
+
+	public String getJuisteAntwoord() {
 		return juisteAntwoord;
 	}
-	public Integer getMaxaantaPogingen()
-	{
+
+	public Integer getMaxaantaPogingen() {
 		return maxAantalPogingen;
 	}
-	public ArrayList<String> getAntwoordHints()
-	{
+
+	public ArrayList<String> getAntwoordHints() {
 		return antwoordHints;
 	}
-	public Integer getMaxAntwoordTijd()
-	{
+
+	public Integer getMaxAntwoordTijd() {
 		return maxAntwoordTijd;
 	}
-	public Opdracht(String vraag, String juisteAntwoord,
-			Integer maxAantalPogingen, ArrayList<String> antwoordHints,
-			Integer maxAntwoordTijd, Leeraar leeraar, OpdrachtCategorie opdrachtCategorie){
+
+	public Opdracht(String vraag, String juisteAntwoord, Integer maxAantalPogingen, ArrayList<String> antwoordHints,
+			Integer maxAntwoordTijd, Leeraar leeraar, OpdrachtCategorie opdrachtCategorie) {
 		this.vraag = vraag;
 		this.juisteAntwoord = juisteAntwoord;
 		this.maxAantalPogingen = maxAantalPogingen;
@@ -92,14 +91,16 @@ public class Opdracht implements Comparable<Opdracht> {
 		this.opdrachtCategorie = opdrachtCategorie;
 		this.aanmaakDatum = new Datum();
 	}
-	public boolean isJuisteAntwoord(String antwoord)
-	{
+
+	public boolean isJuisteAntwoord(String antwoord) {
 		return antwoord.equals(this.juisteAntwoord);
 	}
+
 	@Override
 	public int compareTo(Opdracht o) {
 		return o.compareTo(this);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == this) {
@@ -114,6 +115,7 @@ public class Opdracht implements Comparable<Opdracht> {
 
 		return compareTo(d) == 0;
 	}
-	
-	
+
+	public void wijzigOpdracht() {
+	}
 }
