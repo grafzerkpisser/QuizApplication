@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
-public abstract class QuizCatalogus{
+public abstract class QuizCatalogus implements Iterable <Quiz>{
 	 
 	public ArrayList <Quiz> quiznaam =new ArrayList <Quiz>();
 	
@@ -12,9 +12,14 @@ public abstract class QuizCatalogus{
 		quiznaam.add(q); 
 	}
 	
+	public void deleteQuizFromCatalogue( Quiz q){
+		quiznaam.remove(q);
+	}
+	
+	
 	public String toString(){
 		String result = "";
-		for ( Quiz q : quiznaam) 
+		for ( Quiz q : quiznaam) //for each
 			result += "Quiz: " + q + "\n";
 		return result;
 	}
