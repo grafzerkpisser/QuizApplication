@@ -8,6 +8,8 @@ public abstract class QuizCatalogus implements Iterable <Quiz>{
 	 
 	public ArrayList <Quiz> quiznaam =new ArrayList <Quiz>();
 	
+	// nog exceptions opvangen
+	
 	public void addQuizToCatalogue (Quiz q){
 		quiznaam.add(q); 
 	}
@@ -15,8 +17,7 @@ public abstract class QuizCatalogus implements Iterable <Quiz>{
 	public void deleteQuizFromCatalogue( Quiz q){
 		quiznaam.remove(q);
 	}
-	
-	
+		
 	public String toString(){
 		String result = "";
 		for ( Quiz q : quiznaam) //for each
@@ -24,6 +25,6 @@ public abstract class QuizCatalogus implements Iterable <Quiz>{
 		return result;
 	}
 	
-	
+	//override methode
 	
 }
