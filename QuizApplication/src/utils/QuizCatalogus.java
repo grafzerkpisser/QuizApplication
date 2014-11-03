@@ -1,22 +1,30 @@
 package utils;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
 public abstract class QuizCatalogus implements Iterable <Quiz>{
-	private ArrayList <Quiz> quiznaam;
+	 
+	public ArrayList <Quiz> quiznaam =new ArrayList <Quiz>();
 	
-	public QuizCatalogus(){
-		quiznaam =new ArrayList <Quiz>();
+	// nog exceptions opvangen
+	
+	public void addQuizToCatalogue (Quiz q){
+		quiznaam.add(q); 
+	}
+	
+	public void deleteQuizFromCatalogue( Quiz q){
+		quiznaam.remove(q);
+	}
 		
+	public String toString(){
+		String result = "";
+		for ( Quiz q : quiznaam) //for each
+			result += "Quiz: " + q + "\n";
+		return result;
 	}
 	
-	/*public void voegQuizToe(String naam, String leerjaar, Boolean test, Boolean uniek, String status){
-		Quiz onderwerp = new Quiz(naam, status, uniek, uniek, status);
-		quiznaam.add(onderwerp);
-	}*/
+	//override methode
 	
-	public String toString() {
-		return " Quiz" + quiznaam ;
-	}
 }
