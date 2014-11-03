@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.UUID;
+
 import model.opdracht.QuizOpdracht;
 import utils.datum.Datum;
 import enums.Leeraar;
@@ -7,6 +9,7 @@ import enums.Leerjaar;
 import enums.QuizStatus;
 
 public class Quiz implements Comparable<Quiz>, Cloneable {
+	private UUID quizId;
 	private String onderwerp;
 	private Leerjaar leerjaar;
 	private Boolean isTest;
@@ -17,6 +20,7 @@ public class Quiz implements Comparable<Quiz>, Cloneable {
 
 	// constructor met parameters
 	public Quiz(String onderwerp, Leerjaar leerjaar, Boolean isTest, Boolean isUniekeDeelname, Leeraar leraar) {
+		this.quizId = UUID.randomUUID();
 		this.onderwerp = onderwerp;
 		this.leerjaar = leerjaar;
 		this.isTest = isTest;
@@ -47,8 +51,10 @@ public class Quiz implements Comparable<Quiz>, Cloneable {
 	}
 
 	public String getCleanOnderwerp() {
+		String regex = "\\s*\\b(de|een|het|met|van|in)\\b\\s*";
 
-		return onderwerp;
+		String nieuwOnderwerp = this.onderwerp.replaceAll(regex, "");
+		return nieuwOnderwerp;
 	}
 
 	public void setOnderwerp(String onderwerp) {
@@ -87,6 +93,17 @@ public class Quiz implements Comparable<Quiz>, Cloneable {
 	}
 
 	@Override
+	public Quiz clone() throws CloneNotSupportedException {
+
+		try {
+			Quiz q = (Quiz) super.clone();
+			return q;
+		} catch (CloneNotSupportedException e) {
+			throw e;
+		}
+	}
+
+	@Override
 	public int hashCode() {
 		return this.leraar.getValue() + this.registratieDatum.verschilInDagen(new Datum()) + this.registratieDatum.hashCode();
 	}
@@ -101,12 +118,9 @@ public class Quiz implements Comparable<Quiz>, Cloneable {
 		if (o.onderwerp.equalsIgnoreCase(this.onderwerp)) {
 			return 0;
 		} else {
-			String regex = "\\s*\\b(de|een|het|met|van|in)\\b\\s*";
+			String inputNieuwOnderwerp = o.getCleanOnderwerp();
 
-			String nieuwOnderwerp = this.onderwerp.replaceAll(regex, "");
-			String inputNieuwOnderwerp = o.onderwerp.replaceAll(regex, "");
-
-			if (nieuwOnderwerp.replace(" ", "").equalsIgnoreCase(inputNieuwOnderwerp.replace(" ", ""))) {
+			if (getCleanOnderwerp().replace(" ", "").equalsIgnoreCase(inputNieuwOnderwerp.replace(" ", ""))) {
 				return 0;
 			}
 		}
@@ -116,5 +130,4 @@ public class Quiz implements Comparable<Quiz>, Cloneable {
 	public void verwijderQuizOpdracht(QuizOpdracht quizOpdracht) {
 		// TODO Auto-generated method stub
 	}
-
 }
