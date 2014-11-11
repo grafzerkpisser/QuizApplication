@@ -8,6 +8,10 @@ import enums.OpdrachtCategorie;
 public class Meerkeuze extends Opdracht implements Valideerbaar {
 
 	private ArrayList<String> keuzes;
+	public ArrayList<String> getKeuzes()
+	{
+		return keuzes;
+	}
 	public static final String VALIDEERTEKST = "Geen geldige keuze";
 	public Meerkeuze(String vraag, String juisteAntwoord, Integer maxAantalPogingen, ArrayList<String> antwoordHints,
 			Integer maxAntwoordTijd, ArrayList<String> keuzes, 
@@ -33,6 +37,10 @@ public class Meerkeuze extends Opdracht implements Valideerbaar {
 	}
 	public String getValideerTekst() {
 		return VALIDEERTEKST;
+	}
+	@Override
+	public String toString() {
+		return "Meerkeuze [keuzes=" + keuzes + "]";
 	}
 
 }

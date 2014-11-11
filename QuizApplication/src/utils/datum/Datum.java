@@ -9,6 +9,30 @@ import java.util.GregorianCalendar;
 
 public class Datum implements Comparable<Datum> {
 
+	//Properties
+	private GregorianCalendar gregDatum;
+	//Getters & Setters
+	public GregorianCalendar getDatum() {
+		return gregDatum;
+	}
+	public String getDatumInEuropeesFormaat() {
+		SimpleDateFormat sdf = new SimpleDateFormat("d/M/yyyy");
+		return sdf.format(gregDatum.getTime());
+	}
+	public String getDatumInAmerikaansFormaat() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/M/d");
+		return sdf.format(gregDatum.getTime());
+	}
+	public boolean setDatum(int jaar, int maand, int dag) {
+		try {
+			this.setDatum(new GregorianCalendar(jaar, maand, dag));
+		} catch (IllegalArgumentException ex) {
+			return false;
+		}
+		return true;
+	}
+	
+	//Constructors
 	public Datum() {
 		gregDatum = (GregorianCalendar) GregorianCalendar.getInstance();
 	}
@@ -51,46 +75,8 @@ public class Datum implements Comparable<Datum> {
 		this.setDatum(d.getDatum());
 	}
 
-	private GregorianCalendar gregDatum;
+	//Methods
 
-	public GregorianCalendar getDatum() {
-		return gregDatum;
-	}
-
-	public String getDatumInAmerikaansFormaat() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/M/d");
-		return sdf.format(gregDatum.getTime());
-	}
-
-	public String getDatumInEuropeesFormaat() {
-		SimpleDateFormat sdf = new SimpleDateFormat("d/M/yyyy");
-		return sdf.format(gregDatum.getTime());
-	}
-
-	public boolean setDatum(int jaar, int maand, int dag) {
-		try {
-			this.setDatum(new GregorianCalendar(jaar, maand, dag));
-		} catch (IllegalArgumentException ex) {
-			return false;
-		}
-		return true;
-
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == this) {
-			return true;
-		}
-
-		if (!(obj instanceof Datum)) {
-			return false;
-		}
-
-		Datum d = (Datum) obj;
-
-		return compareTo(d) == 0;
-	}
 
 	private LocalDate getLocalDate(Datum d) {
 		Calendar cal = Calendar.getInstance();
@@ -127,18 +113,42 @@ public class Datum implements Comparable<Datum> {
 		d1.gregDatum.add(GregorianCalendar.DAY_OF_MONTH, daysToAdd);
 		return d1;
 	}
-
-	@Override
-	public int compareTo(Datum d) {
-		return d.getDatum().compareTo(this.gregDatum);
-	}
-
 	public boolean kleinerDan(Datum d) {
 		return (this.compareTo(d) == -1) ? true : false;
 	}
 
 	private void setDatum(GregorianCalendar d) {
 		gregDatum = d;
+	}
+	
+	//Override Methods
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((gregDatum == null) ? 0 : gregDatum.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Datum other = (Datum) obj;
+		if (gregDatum == null) {
+			if (other.gregDatum != null)
+				return false;
+		} else if (!gregDatum.equals(other.gregDatum))
+			return false;
+		return true;
+	}
+	@Override
+	public int compareTo(Datum d) {
+		return d.getDatum().compareTo(this.gregDatum);
 	}
 	@Override
 	public String toString() {

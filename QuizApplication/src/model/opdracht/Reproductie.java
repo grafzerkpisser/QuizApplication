@@ -23,5 +23,9 @@ public class Reproductie extends Opdracht {
 	{
 		this.trefwoorden.remove(index);
 	}
+	@Override
+	public String toString() {
+		return "Reproductie [trefwoorden=" + trefwoorden + "]";
+	}
 
 }

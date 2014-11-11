@@ -34,5 +34,10 @@ public class Opsomming extends Opdracht implements Valideerbaar {
 	{
 		this.inJuisteVolgorde = inJuisteVolgorde;
 	}
+	@Override
+	public String toString() {
+		return "Opsomming [inJuisteVolgorde=" + inJuisteVolgorde + "]";
+	}
+	
 
 }
