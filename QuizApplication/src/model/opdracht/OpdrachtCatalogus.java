@@ -19,16 +19,20 @@ public class OpdrachtCatalogus implements Iterable<OpdrachtCatalogus>,
 	}
 
 	public void wijzigVraag(Opdracht o, String vraag) {
+		// if o is in QuizOpdrachtenLijst in Opdracht geen verwijdering
+		// mogelijk, count van list
 		o.setVraag(vraag);
 	}
 
 	public void wijzigAntwoord(Opdracht o, String juisteAntwoord) {
+		// if o is in QuizOpdrachtenLijst in Opdracht geen verwijdering
+		// mogelijk, count van list
 		o.setJuisteAntwoord(juisteAntwoord);
 	}
-	
-	public void verwijderOpdracht(Opdracht o)
-	{
-		//
+
+	public void verwijderOpdracht(Opdracht o) {
+		// if o is in QuizOpdrachtenLijst in Opdracht geen verwijdering
+		// mogelijk, count van list
 	}
 
 	@Override
@@ -68,11 +72,10 @@ public class OpdrachtCatalogus implements Iterable<OpdrachtCatalogus>,
 
 	@Override
 	public OpdrachtCatalogus clone() throws CloneNotSupportedException {
-		{
-			OpdrachtCatalogus o_c = new OpdrachtCatalogus();
-			o_c.opdrachtenLijst = this.opdrachtenLijst;
-			return o_c;
-		}
+
+		OpdrachtCatalogus o_c = new OpdrachtCatalogus();
+		o_c.opdrachtenLijst = this.opdrachtenLijst;
+		return o_c;
 
 	}
 }

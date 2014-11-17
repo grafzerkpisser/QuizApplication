@@ -19,7 +19,9 @@ public class Opdracht implements Comparable<Opdracht>, Cloneable {
 	private Leeraar leeraar;
 	private OpdrachtCategorie opdrachtCategorie;
 	private Datum aanmaakDatum;
-	private UUID opdrachtId;
+	private UUID opdrachtId;	
+	private ArrayList<QuizOpdracht> eenQuizOpdrachtLijst;
+	
 	
 	//Getters & Setters
 	
@@ -86,6 +88,9 @@ public class Opdracht implements Comparable<Opdracht>, Cloneable {
 	public Integer getMaxAntwoordTijd() {
 		return maxAntwoordTijd;
 	}
+	public ArrayList<QuizOpdracht> getEenQuizOPdrachtLijst() {
+		return eenQuizOpdrachtLijst;
+	}
 	
 	//Constructors
 	public Opdracht(String vraag, String juisteAntwoord, Integer maxAantalPogingen, ArrayList<String> antwoordHints,
@@ -108,9 +113,37 @@ public class Opdracht implements Comparable<Opdracht>, Cloneable {
 	public void wijzigOpdracht() {
 	}
 	public void verwijderQuizOpdracht(QuizOpdracht quizOpdracht) {
-		// TODO Auto-generated method stub
 
+		ArrayList<QuizOpdracht> teVerwijderenQuizOpdrachten = new ArrayList<QuizOpdracht>();
+		for (QuizOpdracht qO : eenQuizOpdrachtLijst) {
+			if (qO.equals(quizOpdracht)) {
+
+				teVerwijderenQuizOpdrachten.add(quizOpdracht);
+			}
+		}
+
+		for (QuizOpdracht qO : teVerwijderenQuizOpdrachten) {
+			eenQuizOpdrachtLijst.remove(qO);
+		}
 	}
+	
+	public void voegQuizOpdrachtToe(QuizOpdracht quizOpdracht) {
+		ArrayList<QuizOpdracht> toeTeVoegenQuizOpdrachten = new ArrayList<QuizOpdracht>();
+		for (QuizOpdracht qO : eenQuizOpdrachtLijst) {
+			if (qO.equals(quizOpdracht)) {
+
+				toeTeVoegenQuizOpdrachten.add(qO);
+			}
+		}
+
+		if (toeTeVoegenQuizOpdrachten.size() != 0) {
+			for (QuizOpdracht qO : toeTeVoegenQuizOpdrachten) {
+				eenQuizOpdrachtLijst.add(qO);
+			}
+		}
+	}
+	
+	
 	
 	//Override Methods
 	@Override
