@@ -64,4 +64,39 @@ public class QuizOpdracht implements Comparable<QuizOpdracht>, Cloneable {
 		eenOpdracht.verwijderQuizOpdracht(this);
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((eenOpdracht == null) ? 0 : eenOpdracht.hashCode());
+		result = prime * result + ((eenQuiz == null) ? 0 : eenQuiz.hashCode());
+		result = prime * result + maxScore;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		QuizOpdracht other = (QuizOpdracht) obj;
+		if (eenOpdracht == null) {
+			if (other.eenOpdracht != null)
+				return false;
+		} else if (!eenOpdracht.equals(other.eenOpdracht))
+			return false;
+		if (eenQuiz == null) {
+			if (other.eenQuiz != null)
+				return false;
+		} else if (!eenQuiz.equals(other.eenQuiz))
+			return false;
+		if (maxScore != other.maxScore)
+			return false;
+		return true;
+	}
+
 }
