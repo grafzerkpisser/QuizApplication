@@ -1,6 +1,9 @@
 package utils;
 
 import utils.Quiz;
+import model.opdracht.Opdracht;
+import model.opdracht.OpdrachtCatalogus;
+
 import java.util.ArrayList;
 //import java.util.Collections;
 //import java.util.Iterator;
@@ -32,6 +35,7 @@ public abstract class QuizCatalogus implements Iterable <Quiz>{
 	
 	public void deleteQuizFromCatalogue( Quiz q){
 		// enkel te verwijderen indien status in constructie of afgewerkt
+		q.getQuizStatus();
 		
 		quiznaam.remove(q);
 	}
@@ -43,13 +47,40 @@ public abstract class QuizCatalogus implements Iterable <Quiz>{
 		return result;
 	}
 	
-	//modify(wijzigen)
-	
-	
-	public QuizCatalogus clone(){
-		return new QuizCatalogus(this);
+	public int compareTo (QuizCatalogus QC){
+		return QC.compareTo(QC);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((quiznaam == null) ? 0 : quiznaam.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		QuizCatalogus other = (QuizCatalogus) obj;
+		if (quiznaam == null) {
+			if (other.quiznaam != null)
+				return false;
+		} else if (!quiznaam.equals(other.quiznaam))
+			return false;
+		return true;
 	}
 	
-		//comparable
+	
+	
+	
+	
+		
 	
 }
