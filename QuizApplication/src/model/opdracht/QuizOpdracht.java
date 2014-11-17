@@ -1,6 +1,6 @@
 package model.opdracht;
 
-import utils.Quiz;
+import model.quiz.Quiz;
 
 public class QuizOpdracht implements Comparable<QuizOpdracht>, Cloneable {
 

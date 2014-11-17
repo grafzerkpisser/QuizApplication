@@ -3,7 +3,7 @@ package model.opdracht;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import utils.Quiz;
+import model.quiz.Quiz;
 import utils.datum.Datum;
 import enums.Leeraar;
 import enums.OpdrachtCategorie;

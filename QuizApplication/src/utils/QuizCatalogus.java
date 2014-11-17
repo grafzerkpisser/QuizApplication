@@ -1,5 +1,6 @@
 package utils;
 import java.util.ArrayList;
+import model.quiz.Quiz;
 //import java.util.Collections;
 //import java.util.Iterator;
 //import java.io.File;
