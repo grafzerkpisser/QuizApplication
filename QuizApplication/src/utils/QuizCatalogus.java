@@ -1,6 +1,5 @@
 package utils;
 
-import utils.Quiz;
 import model.opdracht.Opdracht;
 import model.opdracht.OpdrachtCatalogus;
 
@@ -11,6 +10,7 @@ import java.util.ArrayList;
 //import java.util.Scanner;
 
 
+import model.quiz.Quiz;
 public abstract class QuizCatalogus implements Iterable <Quiz>{
 	
 	// is hiermee de associatie met Quiz af
@@ -76,11 +76,4 @@ public abstract class QuizCatalogus implements Iterable <Quiz>{
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
-		
-	
 }

@@ -1,4 +1,4 @@
-package utils;
+package model.quiz;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -19,13 +19,7 @@ public class Quiz implements Comparable<Quiz>, Cloneable {
 	private Leeraar leraar;
 	private Datum registratieDatum;
 	private ArrayList<QuizOpdracht> eenQuizOpdrachtLijst;
-
 	
-
-
-
-
-
 	// constructor met parameters
 	public Quiz(String onderwerp, Leerjaar leerjaar, Boolean isTest, Boolean isUniekeDeelname, Leeraar leraar) {
 		this.quizId = UUID.randomUUID();

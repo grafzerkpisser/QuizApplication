@@ -11,28 +11,35 @@ public class OpdrachtCatalogus implements Iterable<OpdrachtCatalogus>,
 
 	public OpdrachtCatalogus() {
 		opdrachtenLijst = new ArrayList<Opdracht>();
-
 	}
 
 	public void voegOpdrachtToe(Opdracht o) {
 		opdrachtenLijst.add(o);
 	}
 
-	public void wijzigVraag(Opdracht o, String vraag) {
-		// if o is in QuizOpdrachtenLijst in Opdracht geen verwijdering
-		// mogelijk, count van list
-		o.setVraag(vraag);
+	public void wijzigVraag(Opdracht o, String vraag) throws Exception {
+		if (o.getEenQuizOPdrachtLijst().size() > 0)
+			throw new Exception(
+					"Vraag kan niet gewijzigd worden wanneer reeds toegevoegd aan een Quiz");
+		else
+			o.setVraag(vraag);
 	}
 
-	public void wijzigAntwoord(Opdracht o, String juisteAntwoord) {
-		// if o is in QuizOpdrachtenLijst in Opdracht geen verwijdering
-		// mogelijk, count van list
-		o.setJuisteAntwoord(juisteAntwoord);
+	public void wijzigAntwoord(Opdracht o, String juisteAntwoord)
+			throws Exception {
+		if (o.getEenQuizOPdrachtLijst().size() > 0)
+			throw new Exception(
+					"Antwoord kan niet gewijzigd worden wanneer reeds toegevoegd aan een Quiz");
+		else
+			o.setJuisteAntwoord(juisteAntwoord);
 	}
 
-	public void verwijderOpdracht(Opdracht o) {
-		// if o is in QuizOpdrachtenLijst in Opdracht geen verwijdering
-		// mogelijk, count van list
+	public void verwijderOpdracht(Opdracht o) throws Exception {
+		if (o.getEenQuizOPdrachtLijst().size() > 0)
+			throw new Exception(
+					"Opdracht kan niet verwijderd worden wanneer reeds toegevoegd aan een Quiz");
+		else
+			opdrachtenLijst.remove(o);
 	}
 
 	@Override
@@ -45,18 +52,8 @@ public class OpdrachtCatalogus implements Iterable<OpdrachtCatalogus>,
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (obj == this) {
-			return true;
-		}
-
-		if (!(obj instanceof Opdracht)) {
-			return false;
-		}
-
-		OpdrachtCatalogus d = (OpdrachtCatalogus) obj;
-
-		return compareTo(d) == 0;
+	public int compareTo(OpdrachtCatalogus o) {
+		return o.compareTo(this);
 	}
 
 	@Override
@@ -66,8 +63,29 @@ public class OpdrachtCatalogus implements Iterable<OpdrachtCatalogus>,
 	}
 
 	@Override
-	public int compareTo(OpdrachtCatalogus o) {
-		return o.compareTo(this);
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((opdrachtenLijst == null) ? 0 : opdrachtenLijst.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OpdrachtCatalogus other = (OpdrachtCatalogus) obj;
+		if (opdrachtenLijst == null) {
+			if (other.opdrachtenLijst != null)
+				return false;
+		} else if (!opdrachtenLijst.equals(other.opdrachtenLijst))
+			return false;
+		return true;
 	}
 
 	@Override
@@ -76,6 +94,5 @@ public class OpdrachtCatalogus implements Iterable<OpdrachtCatalogus>,
 		OpdrachtCatalogus o_c = new OpdrachtCatalogus();
 		o_c.opdrachtenLijst = this.opdrachtenLijst;
 		return o_c;
-
 	}
 }
