@@ -1,12 +1,16 @@
 package model.opdracht;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
+import utils.Quiz;
 import utils.datum.Datum;
 import enums.Leeraar;
 import enums.OpdrachtCategorie;
 
-public class Opdracht implements Comparable<Opdracht> {
+public class Opdracht implements Comparable<Opdracht>, Cloneable {
+	
+	//Properties
 	private String vraag;
 	private String juisteAntwoord;
 	private Integer maxAantalPogingen;
@@ -15,7 +19,10 @@ public class Opdracht implements Comparable<Opdracht> {
 	private Leeraar leeraar;
 	private OpdrachtCategorie opdrachtCategorie;
 	private Datum aanmaakDatum;
-
+	private UUID opdrachtId;
+	
+	//Getters & Setters
+	
 	public void setAanmaakDatum(Datum aanmaakDatum) {
 		this.aanmaakDatum = aanmaakDatum;
 	}
@@ -79,9 +86,11 @@ public class Opdracht implements Comparable<Opdracht> {
 	public Integer getMaxAntwoordTijd() {
 		return maxAntwoordTijd;
 	}
-
+	
+	//Constructors
 	public Opdracht(String vraag, String juisteAntwoord, Integer maxAantalPogingen, ArrayList<String> antwoordHints,
 			Integer maxAntwoordTijd, Leeraar leeraar, OpdrachtCategorie opdrachtCategorie) {
+		this.opdrachtId = UUID.randomUUID();
 		this.vraag = vraag;
 		this.juisteAntwoord = juisteAntwoord;
 		this.maxAantalPogingen = maxAantalPogingen;
@@ -91,36 +100,112 @@ public class Opdracht implements Comparable<Opdracht> {
 		this.opdrachtCategorie = opdrachtCategorie;
 		this.aanmaakDatum = new Datum();
 	}
-
+	
+	//Methods
 	public boolean isJuisteAntwoord(String antwoord) {
 		return antwoord.equals(this.juisteAntwoord);
 	}
+	public void wijzigOpdracht() {
+	}
+	public void verwijderQuizOpdracht(QuizOpdracht quizOpdracht) {
+		// TODO Auto-generated method stub
 
+	}
+	
+	//Override Methods
 	@Override
 	public int compareTo(Opdracht o) {
 		return o.compareTo(this);
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((aanmaakDatum == null) ? 0 : aanmaakDatum.hashCode());
+		result = prime * result
+				+ ((antwoordHints == null) ? 0 : antwoordHints.hashCode());
+		result = prime * result
+				+ ((juisteAntwoord == null) ? 0 : juisteAntwoord.hashCode());
+		result = prime * result + ((leeraar == null) ? 0 : leeraar.hashCode());
+		result = prime
+				* result
+				+ ((maxAantalPogingen == null) ? 0 : maxAantalPogingen
+						.hashCode());
+		result = prime * result
+				+ ((maxAntwoordTijd == null) ? 0 : maxAntwoordTijd.hashCode());
+		result = prime
+				* result
+				+ ((opdrachtCategorie == null) ? 0 : opdrachtCategorie
+						.hashCode());
+		result = prime * result + ((vraag == null) ? 0 : vraag.hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
-		if (obj == this) {
+		if (this == obj)
 			return true;
-		}
-
-		if (!(obj instanceof Opdracht)) {
+		if (obj == null)
 			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Opdracht other = (Opdracht) obj;
+		if (aanmaakDatum == null) {
+			if (other.aanmaakDatum != null)
+				return false;
+		} else if (!aanmaakDatum.equals(other.aanmaakDatum))
+			return false;
+		if (antwoordHints == null) {
+			if (other.antwoordHints != null)
+				return false;
+		} else if (!antwoordHints.equals(other.antwoordHints))
+			return false;
+		if (juisteAntwoord == null) {
+			if (other.juisteAntwoord != null)
+				return false;
+		} else if (!juisteAntwoord.equals(other.juisteAntwoord))
+			return false;
+		if (leeraar != other.leeraar)
+			return false;
+		if (maxAantalPogingen == null) {
+			if (other.maxAantalPogingen != null)
+				return false;
+		} else if (!maxAantalPogingen.equals(other.maxAantalPogingen))
+			return false;
+		if (maxAntwoordTijd == null) {
+			if (other.maxAntwoordTijd != null)
+				return false;
+		} else if (!maxAntwoordTijd.equals(other.maxAntwoordTijd))
+			return false;
+		if (opdrachtCategorie != other.opdrachtCategorie)
+			return false;
+		if (vraag == null) {
+			if (other.vraag != null)
+				return false;
+		} else if (!vraag.equals(other.vraag))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString()
+	{
+		return "Vraag: " + this.vraag + " & Categorie: " + this.opdrachtCategorie.toString(); 
+	}
+	@Override
+	public Opdracht clone() throws CloneNotSupportedException {
+
+		try {
+			Opdracht q = (Opdracht) super.clone();
+			return q;
+		} catch (CloneNotSupportedException e) {
+			throw e;
 		}
-
-		Opdracht d = (Opdracht) obj;
-
-		return compareTo(d) == 0;
 	}
+	
 
-	public void wijzigOpdracht() {
-	}
 
-	public void verwijderQuizOpdracht(QuizOpdracht quizOpdracht) {
-		// TODO Auto-generated method stub
-
-	}
+	
+	
 }
