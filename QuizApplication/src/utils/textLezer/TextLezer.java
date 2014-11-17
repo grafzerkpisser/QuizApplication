@@ -1,6 +1,7 @@
 package utils.textLezer;
 import utils.datum.Datum;
 import java.io.*;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Scanner;
 

@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import model.opdracht.QuizOpdracht;
@@ -17,6 +18,13 @@ public class Quiz implements Comparable<Quiz>, Cloneable {
 	private QuizStatus quizStatus;
 	private Leeraar leraar;
 	private Datum registratieDatum;
+	private ArrayList<QuizOpdracht> eenQuizOpdrachtLijst;
+
+	
+
+
+
+
 
 	// constructor met parameters
 	public Quiz(String onderwerp, Leerjaar leerjaar, Boolean isTest, Boolean isUniekeDeelname, Leeraar leraar) {
@@ -76,6 +84,11 @@ public class Quiz implements Comparable<Quiz>, Cloneable {
 	public void setQuizStatus(QuizStatus quizStatus) {
 		this.quizStatus = quizStatus;
 	}
+	public ArrayList<QuizOpdracht> getEenQuizOpdrachtLijst() {
+		return eenQuizOpdrachtLijst;
+	}
+	
+	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -128,6 +141,33 @@ public class Quiz implements Comparable<Quiz>, Cloneable {
 	}
 
 	public void verwijderQuizOpdracht(QuizOpdracht quizOpdracht) {
-		// TODO Auto-generated method stub
+
+		ArrayList<QuizOpdracht> teVerwijderenQuizOpdrachten = new ArrayList<QuizOpdracht>();
+		for (QuizOpdracht qO : eenQuizOpdrachtLijst) {
+			if (qO.equals(quizOpdracht)) {
+
+				teVerwijderenQuizOpdrachten.add(quizOpdracht);
+			}
+		}
+
+		for (QuizOpdracht qO : teVerwijderenQuizOpdrachten) {
+			eenQuizOpdrachtLijst.remove(qO);
+		}
+	}
+
+	public void voegQuizOpdrachtToe(QuizOpdracht quizOpdracht) {
+		ArrayList<QuizOpdracht> toeTeVoegenQuizOpdrachten = new ArrayList<QuizOpdracht>();
+		for (QuizOpdracht qO : eenQuizOpdrachtLijst) {
+			if (qO.equals(quizOpdracht)) {
+
+				toeTeVoegenQuizOpdrachten.add(qO);
+			}
+		}
+
+		if (toeTeVoegenQuizOpdrachten.size() != 0) {
+			for (QuizOpdracht qO : toeTeVoegenQuizOpdrachten) {
+				eenQuizOpdrachtLijst.add(qO);
+			}
+		}
 	}
 }
