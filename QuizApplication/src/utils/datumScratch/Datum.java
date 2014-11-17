@@ -1,7 +1,7 @@
 package utils.datumScratch;
 
 import java.util.Date;
-
+//test
 public class Datum implements Comparable<Datum> {
 	private int dag;
 	private int maand;
