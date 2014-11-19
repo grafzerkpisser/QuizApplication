@@ -1,11 +1,13 @@
 package model.opdracht;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import enums.Leeraar;
 import enums.OpdrachtCategorie;
 
-public class Opsomming extends Opdracht implements Valideerbaar {
+@SuppressWarnings("serial")
+public class Opsomming extends Opdracht implements Valideerbaar,Serializable {
 
 	private Boolean inJuisteVolgorde;
 	public static final String VALIDEERTEKST = "Typ je antwoorden achter elkaar gescheiden door ;";

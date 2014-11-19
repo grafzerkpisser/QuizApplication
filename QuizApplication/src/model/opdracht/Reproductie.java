@@ -1,11 +1,13 @@
 package model.opdracht;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import enums.Leeraar;
 import enums.OpdrachtCategorie;
 
-public class Reproductie extends Opdracht {
+@SuppressWarnings("serial")
+public class Reproductie extends Opdracht implements Serializable {
 
 	private ArrayList<String> trefwoorden;
 	public Reproductie(String vraag, String juisteAntwoord, Integer maxAantalPogingen, ArrayList<String> antwoordHints,

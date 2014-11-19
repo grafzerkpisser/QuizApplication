@@ -1,11 +1,14 @@
 package model.opdracht;
 
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import enums.Leeraar;
 import enums.OpdrachtCategorie;
 
-public class Meerkeuze extends Opdracht implements Valideerbaar {
+@SuppressWarnings("serial")
+public class Meerkeuze extends Opdracht implements Valideerbaar, Serializable {
 
 	private ArrayList<String> keuzes;
 	public ArrayList<String> getKeuzes()
@@ -24,9 +27,11 @@ public class Meerkeuze extends Opdracht implements Valideerbaar {
 	{
 		keuzes.add(keuze);
 	}
+	@SuppressWarnings("unused")
 	public void verwijderKeuze(Integer index)
 	{
-		keuzes.remove(index);
+		boolean b = (keuzes.remove(index.intValue()) != null);
+		
 	}
 	public boolean valide(String antwoord) {
 		for (String s : keuzes) {
