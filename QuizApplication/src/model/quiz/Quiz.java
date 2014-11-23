@@ -85,7 +85,7 @@ public class Quiz implements Comparable<Quiz>, Cloneable, Serializable {
 	public ArrayList<QuizOpdracht> getEenQuizOpdrachtLijst() {
 		return eenQuizOpdrachtLijst;
 	}
-	
+		
 	
 
 	@Override
