@@ -1,79 +1,71 @@
 package utils;
+import enums.Leerjaar;
+import enums.QuizStatus;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
+import model.quiz.Quiz;
+
 import org.junit.Test;
 
-public class QuizCatalogusTest {
+import enums.Leerjaar;
+import enums.QuizStatus;
+
+public class QuizCatalogusTest  {  
+
+	private String onderwerp;
+	private Leerjaar leerjaar;
+	private Boolean isTest;
+	private Boolean isUniekeDeelname;
+	private QuizStatus quizStatus;
 
 	@Test
 	public void testQuizCatalogus() {
-		fail("Not yet implemented");
+		System.out.println("Test: Aanmaken QuizCatalugus");
+		ArrayList<Quiz> quizLijst = new ArrayList<Quiz>();
+		
 	}
 
 	@Test
-	public void testVoegQuizToe() {
-		fail("Not yet implemented");
-	}
+	public void testVoegQuizToe(Quiz q) {
+		System.out.println("Test: VoegQuizToe");
+		Quiz quiz =  new Quiz("Aardrijkskunde", "eerste" , true, false, "AFGEWERKT");
+		
+		}
 
 	@Test
-	public void testObject() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetClass() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testHashCode() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testEquals() {
-		fail("Not yet implemented");
+	public void testVerwijderQuiz() {
+		System.out.println("Test: VerwijderQuiz");
+		
 	}
 
 	@Test
 	public void testClone() {
-		fail("Not yet implemented");
+		System.out.println("Test: Clone");
+		//clonen om equlas te vergelijken
+		
 	}
 
 	@Test
 	public void testToString() {
-		fail("Not yet implemented");
+		System.out.println("Test: ToString");
 	}
 
 	@Test
-	public void testNotify() {
-		fail("Not yet implemented");
+	public void testEqualsObject() {
+		System.out.println("Test: EqualsObject");
 	}
 
 	@Test
-	public void testNotifyAll() {
-		fail("Not yet implemented");
+	public void testCompareTo() {
+		System.out.println("Test: CompareTo");
 	}
 
 	@Test
-	public void testWaitLong() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLongInt() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWait() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testFinalize() {
-		fail("Not yet implemented");
+	public void testIterator() {
+		System.out.println("Test: Iterator");
 	}
 
 }
