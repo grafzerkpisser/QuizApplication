@@ -2,9 +2,13 @@ package utils.jUnitTests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotNull;
+
 import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import enums.*;
 import model.opdracht.*;
 import model.quiz.*;
@@ -109,10 +113,31 @@ public class OpdrachtCatalogusTest {
 		}
 		assertEquals("Brussel", o1.getJuisteAntwoord());
 	}
-	
-	
-	//Hash
-	//toString
-	//compareTo
-	//equals
+
+	@Test
+	public void test_Equals_Hash_Aanvaard() {
+		OpdrachtCatalogus oc1 = new OpdrachtCatalogus();
+		OpdrachtCatalogus oc2 = new OpdrachtCatalogus();
+		assertTrue(oc1.equals(oc2) && oc2.equals(oc1));
+		assertTrue(oc1.hashCode() == oc2.hashCode());
+		
+	}
+
+	@Test
+	public void test_toString_Aanvaard() {
+		a.voegOpdrachtToe(o1);
+		assertEquals("Vraag: " + "Hoofdstad van België" + " & Categorie: "
+				+ "AlgemeneKennis/n", a.toString());
+	}
+	/*@Test 
+	public void test_compareTo_OpdrachtCatalogus_Aanvaard()
+	{
+		OpdrachtCatalogus oc1 = new OpdrachtCatalogus();
+		OpdrachtCatalogus oc2 = new OpdrachtCatalogus();
+		oc1.voegOpdrachtToe(o1);
+		oc2.voegOpdrachtToe(o1);
+		assertEquals("comparable", 0, oc1.compareTo(oc2));
+	}
+	*/
+
 }
