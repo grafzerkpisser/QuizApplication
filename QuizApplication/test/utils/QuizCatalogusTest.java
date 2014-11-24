@@ -1,5 +1,6 @@
 package utils;
 import enums.Leerjaar;
+import enums.Leeraar;
 import enums.QuizStatus;
 
 import static org.junit.Assert.*;
@@ -15,11 +16,7 @@ import enums.QuizStatus;
 
 public class QuizCatalogusTest  {  
 
-	private String onderwerp;
-	private Leerjaar leerjaar;
-	private Boolean isTest;
-	private Boolean isUniekeDeelname;
-	private QuizStatus quizStatus;
+	
 
 	@Test
 	public void testQuizCatalogus() {
@@ -31,7 +28,7 @@ public class QuizCatalogusTest  {
 	@Test
 	public void testVoegQuizToe(Quiz q) {
 		System.out.println("Test: VoegQuizToe");
-		Quiz quiz =  new Quiz("Aardrijkskunde", "eerste" , true, false, "AFGEWERKT");
+		Quiz quiz =  new Quiz("Aardrijkskunde", Leerjaar.eerste , true, false, Leeraar.Bart);
 		
 		}
 
