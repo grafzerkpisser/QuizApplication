@@ -1,9 +1,8 @@
-package utils;
+package utils.jUnitTests;
 
 import enums.Leerjaar;
 import enums.Leeraar;
 import enums.OpdrachtCategorie; 
-import enums.QuizStatus;
 import model.opdracht.Opdracht;
 import model.opdracht.QuizOpdracht;
 import model.opdracht.OpdrachtCatalogus;
@@ -15,8 +14,7 @@ import java.util.ArrayList;
 
 import model.quiz.Quiz;
 
-
-public class QuizCatalogusTest  {  
+public class QuizCatalogusTest {
 	
 	
 	private OpdrachtCatalogus opdrachtCatalogus;
