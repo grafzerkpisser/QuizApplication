@@ -1,53 +1,10 @@
-
-package utils;
+package model.opdracht;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import model.quiz.Quiz;
-<<<<<<< HEAD
-=======
-public abstract class QuizCatalogus implements Iterable <Quiz>{
-	
-	// is hiermee de associatie met Quiz af
-	public static ArrayList <Quiz> quiznaam =new ArrayList <Quiz>();
-	
-	// nog exceptions opvangen
-	
-	public static void addQuizToCatalogue (Quiz q){
-		//exception: is q wel een quiz? ArrayStoreException
-		try {
-		quiznaam.add(q);
-		}
-		catch(ArrayStoreException f){
-			System.out.println("Fout formaat");
-		}
-		
-		finally{
-			System.out.println("Quiz niet toegevoegd");
-		}
-		
-	}
-	
-	public static void deleteQuizFromCatalogue( Quiz q){
-		// enkel te verwijderen indien status in constructie of afgewerkt
-		q.getQuizStatus();
-		
-		quiznaam.remove(q);
-	}
-		
-	public String toString(){
-		String result = "";
-		for ( Quiz q : quiznaam) //for each
-			result += "Quiz: " + q + "\n";
-		return result;
-	}
-	
-	public int compareTo (QuizCatalogus QC){
-		return QC.compareTo(QC);
-	}
->>>>>>> refs/remotes/origin/master
 
 @SuppressWarnings("serial")
 public class QuizCatalogus implements Iterable<QuizCatalogus>,
@@ -110,7 +67,6 @@ Comparable<QuizCatalogus>, Cloneable, Serializable {
 			return false;
 		return true;
 	}
-<<<<<<< HEAD
 	@Override
 	public int compareTo(QuizCatalogus q) {
 		return q.compareTo(this);
@@ -123,6 +79,3 @@ Comparable<QuizCatalogus>, Cloneable, Serializable {
 	}
 
 }
-=======
-}
->>>>>>> refs/remotes/origin/master

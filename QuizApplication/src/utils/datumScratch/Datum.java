@@ -1,8 +1,10 @@
 package utils.datumScratch;
 
+import java.io.Serializable;
 import java.util.Date;
 //test
-public class Datum implements Comparable<Datum> {
+@SuppressWarnings("serial")
+public class Datum implements Comparable<Datum>, Serializable {
 	private int dag;
 	private int maand;
 	private int jaar;

@@ -1,8 +1,11 @@
 package model.opdracht;
 
+import java.io.Serializable;
+
 import model.quiz.Quiz;
 
-public class QuizOpdracht implements Comparable<QuizOpdracht>, Cloneable {
+@SuppressWarnings("serial")
+public class QuizOpdracht implements Comparable<QuizOpdracht>, Cloneable,Serializable {
 
 	private int maxScore;
 	private Opdracht eenOpdracht;

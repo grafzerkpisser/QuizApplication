@@ -1,8 +1,10 @@
 package utils.textLezer;
 import utils.datum.Datum;
+
 import java.io.*;
-import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -17,6 +19,11 @@ public class TextLezer {
 	}
 
 	public void leesNaamDatumVanBestand() {
+		Datum jongste = null;
+		String naamJongste="";
+		Datum oudste = null;
+		String naamOudste="";
+		List<String> FoutieveData = new ArrayList<String>();
 		output = "";
 		File file = new File("src/utils/textLezer/File.txt");
 		try {
@@ -31,12 +38,17 @@ public class TextLezer {
 						Datum d = new Datum(Integer.parseInt(datumVeld[0]),
 								Integer.parseInt(datumVeld[1]),
 								Integer.parseInt(datumVeld[2]));
-
-						datum = d;
-						output += String.format("%s %s %n", naam, datum
-								.getDatumInEuropeesFormaat().toString());
+						if(jongste == null || jongste.kleinerDan(d) )
+						{
+							naamJongste = naam;
+							jongste = d;
+						}
+						if(oudste == null || oudste.kleinerDan(d) == false){
+							naamOudste = naam;
+							oudste = d;
+						}
 					} catch (IllegalArgumentException ex) {
-						output += ex.getMessage() + "\n";
+						FoutieveData.add(velden[1].toString());
 					}
 				}
 
@@ -48,17 +60,34 @@ public class TextLezer {
 						Datum da = new Datum(Integer.parseInt(datumVeld[0]),
 								Integer.parseInt(datumVeld[1]),
 								Integer.parseInt(datumVeld[2]));
-						datum = da;
-						output += String.format("%s %s %n", naam, datum
-								.getDatumInEuropeesFormaat().toString());
+						if(jongste == null || jongste.kleinerDan(da) )
+						{
+							naamJongste = naam;
+							jongste = da;
+						}
+						if(oudste == null || oudste.kleinerDan(da) == false){
+							naamOudste = naam;
+							oudste = da;
+						}
 					} catch (IllegalArgumentException ex) {
-						output += ex.getMessage() + "\n";
+						FoutieveData.add(velden[1].toString());
 					}
 				}
 			}
 			if (scanner != null)
 				scanner.close();
-
+			output += String.format("%s %n","De Jongste Persoon:");
+			output += String.format("%s %s %n", naamJongste, jongste
+					.getDatumInEuropeesFormaat().toString());
+			output += String.format("%s %n","De Ouderste Persoon:");
+			output += String.format("%s %s %n", naamOudste, oudste
+					.getDatumInEuropeesFormaat().toString());
+			output += String.format("%s %n","Verschil in dagen:");
+			output += String.format("%s %n",jongste.verschilInDagen(oudste));
+			output += String.format("%s %n","Foutieve Data:");
+			for(String s:FoutieveData){
+				output += String.format("%s %n",s);
+			}
 		} catch (FileNotFoundException ex) {
 			System.out.println("bestand niet gevonden");
 		} catch (Exception ex) {

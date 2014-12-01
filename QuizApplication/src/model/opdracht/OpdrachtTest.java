@@ -4,10 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-import junit.framework.Assert;
-
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import enums.Leeraar;
@@ -97,11 +94,13 @@ public class OpdrachtTest {
 	@Test
 	public void test_Meerkeuze_verwijder_alle_keuze_Success()
 	{
-		((Meerkeuze)meerkeuzeOpdracht).verwijderKeuze(1);
-		((Meerkeuze)meerkeuzeOpdracht).verwijderKeuze(2);
-		((Meerkeuze)meerkeuzeOpdracht).verwijderKeuze(3);
+		((Meerkeuze)meerkeuzeOpdracht).verwijderKeuze(0);
+		((Meerkeuze)meerkeuzeOpdracht).verwijderKeuze(0);
+		((Meerkeuze)meerkeuzeOpdracht).verwijderKeuze(0);
 		assertTrue(((Meerkeuze)meerkeuzeOpdracht).getKeuzes().size() == 0);
 	}
+	
+	
 	
 
 }

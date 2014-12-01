@@ -134,46 +134,47 @@ public class DatumTest {
 		assertEquals("2014/1/3", d2.getDatumInAmerikaansFormaat());
 	}
 
+	@SuppressWarnings("unused")
 	@Test(expected = Exception.class)
 	public void test_datum_constructor_int_maanden_Negatief() {
 		Datum d1 = new Datum(1, 13, 2007);
 	}
-
+	@SuppressWarnings("unused")
 	@Test(expected = IllegalArgumentException.class)
 	public void test_datum_constructor_int_dagen_Negatief() {
 		Datum d1 = new Datum(-1, 12, 2007);
 	}
-
+	@SuppressWarnings("unused")
 	@Test(expected = Exception.class)
 	public void test_Datum_constructor_int_jaren_Negatief() {
 		Datum d1 = new Datum(1, 12, -1);
 	}
-
+	@SuppressWarnings("unused")
 	@Test(expected = IllegalArgumentException.class)
 	public void test_Datum_constructor_string_niet_numeriek() {
 		Datum d1 = new Datum("ditIsEenTest");
 	}
-
+	@SuppressWarnings("unused")
 	@Test(expected = IllegalArgumentException.class)
 	public void test_Datum_constructor_string_foute_maand_Negatief() {
 		Datum d1 = new Datum("01/13/2007");
 	}
-
+	@SuppressWarnings("unused")
 	@Test(expected = IllegalArgumentException.class)
 	public void test_Datum_constructor_string_foute_dag_Negatief() {
 		Datum d1 = new Datum("32/01/2007");
 	}
-
+	@SuppressWarnings("unused")
 	@Test(expected = IllegalArgumentException.class)
 	public void test_Datum_constructor_string_fout_jaar_Negatief() {
 		Datum d1 = new Datum("01/12/-1");
 	}
-
+	@SuppressWarnings("unused")
 	@Test(expected = IllegalArgumentException.class)
 	public void test_Datum_constructor_string_fout_dag_niet_schrikkeljaar_Negatief() {
 		Datum d1 = new Datum("29/02/2011");
 	}
-
+	@SuppressWarnings("unused")
 	@Test(expected = IllegalArgumentException.class)
 	public void test_Datum_constructor_int_fout_dag_niet_schrikkeljaar_Negatief() {
 		Datum d1 = new Datum(29, 02, 2011);
