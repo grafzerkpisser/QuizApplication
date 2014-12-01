@@ -14,11 +14,11 @@ import model.quiz.Quiz;
 public abstract class QuizCatalogus implements Iterable <Quiz>{
 	
 	// is hiermee de associatie met Quiz af
-	public ArrayList <Quiz> quiznaam =new ArrayList <Quiz>();
+	public static ArrayList <Quiz> quiznaam =new ArrayList <Quiz>();
 	
 	// nog exceptions opvangen
 	
-	public void addQuizToCatalogue (Quiz q){
+	public static void addQuizToCatalogue (Quiz q){
 		//exception: is q wel een quiz? ArrayStoreException
 		try {
 		quiznaam.add(q);
@@ -33,7 +33,7 @@ public abstract class QuizCatalogus implements Iterable <Quiz>{
 		
 	}
 	
-	public void deleteQuizFromCatalogue( Quiz q){
+	public static void deleteQuizFromCatalogue( Quiz q){
 		// enkel te verwijderen indien status in constructie of afgewerkt
 		q.getQuizStatus();
 		
