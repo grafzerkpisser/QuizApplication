@@ -17,38 +17,41 @@ closeFile();
 }
 public static void openFile()
 {
-try	{
-input=new Scanner(Paths.get("D:/quiz.txt"));
+	try	{
+			input=new Scanner(Paths.get("D:/quiz.txt"));
+		}
+	catch(IOException ioException)
+	{
+			System.err.println("Kan bestand niet openen");
+			System.exit(1);
+	}
 }
-catch(IOException ioException)
-{
-System.err.println("Kan bestand niet openen");
-System.exit(1);
-}
-}
+
 public static void readRecords()
 {
 System.out.printf("%-15s%-12s%-12s%-10s%-10s%n","Omschrijving","Leerjaar","Test", "Uniek", "Status");
-try
-{
-while (input.hasNext())
-{
-System.out.printf("%-15s%-12s%-12s%-10s%-10s%n", input.next(),input.next(),input.next(),input.next(),input.next());
+	try
+	{
+			while (input.hasNext())
+			{
+				System.out.printf("%-15s%-12s%-12s%-10s%-10s%n", input.next(),input.next(),input.next(),input.next(),input.next());
+			}
+	}
+	catch (NoSuchElementException noSuchElementException)
+	{
+	System.err.println("Bestaat niet");
+	//System.exit(1);
+	}
+	
+	catch (IllegalStateException illegalStateException )
+	{
+		System.err.println("Bestaat niet illegal state");
+	}
 }
-}
-catch (NoSuchElementException noSuchElementException)
-{
-System.err.println("Bestaat niet");
-//System.exit(1);
-}
-catch (IllegalStateException illegalStateException )
-{
-System.err.println("Bestaat niet illegal state");
-}
-}
+
 public static void closeFile()
-{
-if (input != null)
-input.close();
-}
+	{
+	if (input != null)
+		input.close();
+	}
 }

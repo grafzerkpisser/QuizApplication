@@ -47,7 +47,11 @@ public class QuizCatalogusTest {
 	@Test
 	public void test_VerwijderQuiz() {
 		System.out.println("Test: VerwijderQuiz");
+<<<<<<< HEAD
+		//eerst een vraag creëren
+=======
 		//eerst een vraag creÃ«ren
+>>>>>>> refs/remotes/origin/master
 		
 		ArrayList<String> antwoordhints = new ArrayList<String>();
 		antwoordhints.add("Eifeloren");
