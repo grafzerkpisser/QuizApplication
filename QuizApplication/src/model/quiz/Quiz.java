@@ -1,5 +1,6 @@
 package model.quiz;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -14,7 +15,9 @@ import enums.Leeraar;
 import enums.Leerjaar;
 import enums.QuizStatus;
 
-public class Quiz implements Comparable<Quiz>, Cloneable {
+@SuppressWarnings("serial")
+public class Quiz implements Comparable<Quiz>, Cloneable, Serializable {
+	@SuppressWarnings("unused")
 	private UUID quizId;
 	private String onderwerp;
 	private Leerjaar leerjaar;
@@ -28,6 +31,7 @@ public class Quiz implements Comparable<Quiz>, Cloneable {
 	
 	// constructor met parameters
 	public Quiz(String onderwerp, Leerjaar leerjaar, Boolean isTest, Boolean isUniekeDeelname, Leeraar leraar) {
+		eenQuizOpdrachtLijst = new ArrayList<QuizOpdracht>();
 		this.quizId = UUID.randomUUID();
 		this.onderwerp = onderwerp;
 		this.leerjaar = leerjaar;

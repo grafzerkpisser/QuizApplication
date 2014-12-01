@@ -1,11 +1,12 @@
 package model.opdracht;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 
+@SuppressWarnings("serial")
 public class OpdrachtCatalogus implements Iterable<OpdrachtCatalogus>,
-		Comparable<OpdrachtCatalogus>, Cloneable {
+		Comparable<OpdrachtCatalogus>, Cloneable, Serializable {
 
 	public ArrayList<Opdracht> opdrachtenLijst;
 

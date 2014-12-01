@@ -1,14 +1,15 @@
 package model.opdracht;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import model.quiz.Quiz;
 import utils.datum.Datum;
 import enums.Leeraar;
 import enums.OpdrachtCategorie;
 
-public class Opdracht implements Comparable<Opdracht>, Cloneable {
+@SuppressWarnings("serial")
+public class Opdracht implements Comparable<Opdracht>, Cloneable, Serializable {
 	
 	//Properties
 	private String vraag;
@@ -19,6 +20,7 @@ public class Opdracht implements Comparable<Opdracht>, Cloneable {
 	private Leeraar leeraar;
 	private OpdrachtCategorie opdrachtCategorie;
 	private Datum aanmaakDatum;
+	@SuppressWarnings("unused")
 	private UUID opdrachtId;	
 	private ArrayList<QuizOpdracht> eenQuizOpdrachtLijst;
 	
@@ -95,6 +97,7 @@ public class Opdracht implements Comparable<Opdracht>, Cloneable {
 	//Constructors
 	public Opdracht(String vraag, String juisteAntwoord, Integer maxAantalPogingen, ArrayList<String> antwoordHints,
 			Integer maxAntwoordTijd, Leeraar leeraar, OpdrachtCategorie opdrachtCategorie) {
+		this.eenQuizOpdrachtLijst = new ArrayList<QuizOpdracht>();
 		this.opdrachtId = UUID.randomUUID();
 		this.vraag = vraag;
 		this.juisteAntwoord = juisteAntwoord;
@@ -105,6 +108,7 @@ public class Opdracht implements Comparable<Opdracht>, Cloneable {
 		this.opdrachtCategorie = opdrachtCategorie;
 		this.aanmaakDatum = new Datum();
 	}
+	
 	
 	//Methods
 	public boolean isJuisteAntwoord(String antwoord) {
@@ -128,19 +132,7 @@ public class Opdracht implements Comparable<Opdracht>, Cloneable {
 	}
 	
 	public void voegQuizOpdrachtToe(QuizOpdracht quizOpdracht) {
-		ArrayList<QuizOpdracht> toeTeVoegenQuizOpdrachten = new ArrayList<QuizOpdracht>();
-		for (QuizOpdracht qO : eenQuizOpdrachtLijst) {
-			if (qO.equals(quizOpdracht)) {
-
-				toeTeVoegenQuizOpdrachten.add(qO);
-			}
-		}
-
-		if (toeTeVoegenQuizOpdrachten.size() != 0) {
-			for (QuizOpdracht qO : toeTeVoegenQuizOpdrachten) {
-				eenQuizOpdrachtLijst.add(qO);
-			}
-		}
+		eenQuizOpdrachtLijst.add(quizOpdracht);
 	}
 	
 	
