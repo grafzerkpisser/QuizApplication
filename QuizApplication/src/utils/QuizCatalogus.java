@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import model.quiz.Quiz;
-<<<<<<< HEAD
-=======
+/*<<<<<<< HEAD
+=======*/
 public abstract class QuizCatalogus implements Iterable <Quiz>{
 	
 	// is hiermee de associatie met Quiz af
@@ -47,7 +47,7 @@ public abstract class QuizCatalogus implements Iterable <Quiz>{
 	public int compareTo (QuizCatalogus QC){
 		return QC.compareTo(QC);
 	}
->>>>>>> refs/remotes/origin/master
+//>>>>>>> refs/remotes/origin/master
 
 @SuppressWarnings("serial")
 public class QuizCatalogus implements Iterable<QuizCatalogus>,
