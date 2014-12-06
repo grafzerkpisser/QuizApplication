@@ -1,5 +1,5 @@
 package persistentie;
-//package net.codejava.jdbc;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ public class QuizAppDB_connection {
  // Hier gaan we de connectie maken met de DB op C:\apache\...
 	public QuizAppDB_connection(){
 	//connect with embedded driver
-	//jdbc:derby:E:/projects/codejava/webdb;create=true
+	
 		try{
 			String dbURL = "jdbc:derby:C:/Apache/db-derby-10.11.1.1-bin/bin/QuizAppDB";
 		

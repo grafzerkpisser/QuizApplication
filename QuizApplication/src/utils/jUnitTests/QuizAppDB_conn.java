@@ -13,7 +13,7 @@ public class QuizAppDB_conn {
 	@Test
 	public void testQuizAppDB_connection() {
 		try{
-			String dbURL = "jdbc:derby:C:/Apache/db-derby-10.11.1.1-bin/bin:QuizAppDB; create=true";
+			String dbURL = "jdbc:derby:C:/Apache/db-derby-10.11.1.1-bin/bin/QuizAppDB";
 		//
 			Connection conn1 = DriverManager.getConnection(dbURL);
 				if ( conn1 != null)
