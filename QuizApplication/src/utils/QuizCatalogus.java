@@ -9,7 +9,7 @@ import model.quiz.Quiz;
 /*<<<<<<< HEAD
 =======*/
 public abstract class QuizCatalogus implements Iterable <Quiz>{
-	
+	//temp
 	// is hiermee de associatie met Quiz af
 	public static ArrayList <Quiz> quiznaam =new ArrayList <Quiz>();
 	

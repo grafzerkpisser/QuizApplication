@@ -1,5 +1,6 @@
 package view;
 import java.awt.BorderLayout;
+import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -228,5 +229,20 @@ public class QuizCatalogusView extends JFrame {
 	 public void registreerQuizListener(ActionListener listenForRegistreerButton){
 		 btnRegistreer.addActionListener(listenForRegistreerButton);
 	 }
+	 /**
+		 * Launch the application.
+		 */
+		public static void main(String[] args) {
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						QuizCatalogusView frame = new QuizCatalogusView();
+						frame.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
 	
 }

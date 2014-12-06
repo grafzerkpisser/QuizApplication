@@ -18,7 +18,7 @@ Comparable<QuizCatalogus>, Cloneable, Serializable {
 		quizLijst.add(q);
 	}
 	
-	public void verwijderQuiz(Quiz q) throws Exception {
+	public static void verwijderQuiz(Quiz q) throws Exception {
 		if (q.getEenQuizOpdrachtLijst().size() > 0)
 			throw new Exception(
 					"Quiz kan niet verwijderd worden wanneer er reeds opdrachten zijn aan toegevoegd");

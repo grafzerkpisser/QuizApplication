@@ -10,12 +10,16 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JList;
+
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 public class QuizOverviewView extends JFrame {
 
 	private JPanel contentPane;
+	private JButton btnLoadData = new JButton("Data Opladen");
 
 	/**
 	 * Launch the application.
@@ -32,7 +36,8 @@ public class QuizOverviewView extends JFrame {
 			}
 		});
 	}
-
+	
+	
 	/**
 	 * Create the frame.
 	 */
@@ -54,7 +59,7 @@ public class QuizOverviewView extends JFrame {
 					.addComponent(pnlLeft, GroupLayout.PREFERRED_SIZE, 369, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(pnlRight, GroupLayout.PREFERRED_SIZE, 388, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addContainerGap(42, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -64,7 +69,7 @@ public class QuizOverviewView extends JFrame {
 						.addComponent(pnlLeft, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)
 						.addComponent(pnlRight, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)))
 		);
-		pnlRight.setLayout(new GridLayout(4, 0, 0, 5));
+		pnlRight.setLayout(new GridLayout(5, 0, 0, 5));
 		
 		JButton btnToevoegenQuiz = new JButton("Toevoegen Quiz");
 		pnlRight.add(btnToevoegenQuiz);
@@ -75,6 +80,9 @@ public class QuizOverviewView extends JFrame {
 		JButton btnVerwijderenQuiz = new JButton("Verwijderen Quiz");
 		pnlRight.add(btnVerwijderenQuiz);
 		
+		
+		pnlRight.add(btnLoadData);
+		
 		JButton btnVorigScherm = new JButton("Terug");
 		pnlRight.add(btnVorigScherm);
 		pnlLeft.setLayout(new GridLayout(1, 0, 0, 0));
@@ -82,6 +90,12 @@ public class QuizOverviewView extends JFrame {
 		JList list = new JList();
 		pnlLeft.add(list);
 		contentPane.setLayout(gl_contentPane);
+		
+		
 	}
+	public void retrieveDataListener(ActionListener listenForLoadDataButton){
+		btnLoadData.addActionListener(listenForLoadDataButton);
+	}
+	public void FillQuizTable()
 
 }
