@@ -6,8 +6,8 @@ import model.opdracht.QuizOpdracht;
 import model.quiz.Quiz;
 
 public interface QuizState {
-	void verwijderQuizOpdracht(Quiz quiz, QuizOpdracht quizOpdracht);
-	void voegQuizOpdrachtToe(Quiz quiz, QuizOpdracht quizOpdracht);
-	void verwijderQuiz(Quiz quiz);
-	void neemDeelAanQuiz(Quiz quiz);
+	void verwijderQuizOpdracht(Quiz quiz, QuizOpdracht quizOpdracht)throws IllegalStateException;
+	void voegQuizOpdrachtToe(Quiz quiz, QuizOpdracht quizOpdracht) throws IllegalStateException;
+	void verwijderQuiz(Quiz quiz) throws IllegalStateException;
+	void neemDeelAanQuiz(Quiz quiz) throws IllegalStateException;
 }

@@ -9,7 +9,7 @@ import model.quiz.Quiz;
 public class QuizInConstructionState implements QuizState {
 
 	@Override
-	public void verwijderQuizOpdracht(Quiz quiz, QuizOpdracht quizOpdracht) {
+	public void verwijderQuizOpdracht(Quiz quiz, QuizOpdracht quizOpdracht) throws IllegalStateException {
 		ArrayList<QuizOpdracht> teVerwijderenQuizOpdrachten = new ArrayList<QuizOpdracht>();
 		for (QuizOpdracht qO : quiz.getEenQuizOpdrachtLijst()) {
 			if (qO.equals(quizOpdracht)) {
@@ -24,7 +24,7 @@ public class QuizInConstructionState implements QuizState {
 	}
 
 	@Override
-	public void voegQuizOpdrachtToe(Quiz quiz, QuizOpdracht quizOpdracht) {
+	public void voegQuizOpdrachtToe(Quiz quiz, QuizOpdracht quizOpdracht) throws IllegalStateException {
 		ArrayList<QuizOpdracht> toeTeVoegenQuizOpdrachten = new ArrayList<QuizOpdracht>();
 		for (QuizOpdracht qO : quiz.getEenQuizOpdrachtLijst()) {
 			if (qO.equals(quizOpdracht)) {
@@ -41,7 +41,7 @@ public class QuizInConstructionState implements QuizState {
 	}
 
 	@Override
-	public void verwijderQuiz(Quiz quiz) {
+	public void verwijderQuiz(Quiz quiz) throws IllegalStateException {
 		for(QuizOpdracht quizOpdracht : quiz.getEenQuizOpdrachtLijst())
 		{
 			quizOpdracht.ontkoppelOpdrachtVanQuiz();
@@ -50,7 +50,7 @@ public class QuizInConstructionState implements QuizState {
 	}
 
 	@Override
-	public void neemDeelAanQuiz(Quiz quiz) {
+	public void neemDeelAanQuiz(Quiz quiz) throws IllegalStateException {
 		// TODO Auto-generated method stub
 		
 	}
