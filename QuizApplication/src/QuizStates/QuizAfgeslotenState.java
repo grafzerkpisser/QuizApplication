@@ -11,7 +11,7 @@ public class QuizAfgeslotenState implements QuizState {
 	}
 
 	@Override
-	public void voegQuizOpdrachtToe(Quiz quiz, QuizOpdracht quizOpdracht) throws IllegalStateException {
+	public void voegQuizOpdrachtToe(Quiz quiz, QuizOpdracht quizOpdracht) throws IllegalStateException, IllegalArgumentException {
 		throw new IllegalStateException(String.format("QuizOpdracht %s kan niet toegevoegd worden aan Quiz %s.", quizOpdracht, quiz));
 	}
 

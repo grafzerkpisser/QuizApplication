@@ -2,6 +2,7 @@ package QuizStates;
 
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.function.*;
 
 import model.opdracht.QuizOpdracht;
 import model.quiz.Quiz;
@@ -24,20 +25,20 @@ public class QuizInConstructionState implements QuizState {
 	}
 
 	@Override
-	public void voegQuizOpdrachtToe(Quiz quiz, QuizOpdracht quizOpdracht) throws IllegalStateException {
-		ArrayList<QuizOpdracht> toeTeVoegenQuizOpdrachten = new ArrayList<QuizOpdracht>();
-		for (QuizOpdracht qO : quiz.getEenQuizOpdrachtLijst()) {
-			if (qO.equals(quizOpdracht)) {
-
-				toeTeVoegenQuizOpdrachten.add(qO);
-			}
+	public void voegQuizOpdrachtToe(Quiz quiz, QuizOpdracht quizOpdracht) throws IllegalStateException, IllegalArgumentException {
+		ArrayList<QuizOpdracht> quizOpdrachten = quiz.getEenQuizOpdrachtLijst();
+		
+		if(quizOpdrachten == null)
+		{
+			quizOpdrachten = new ArrayList<QuizOpdracht>();
 		}
-
-		if (toeTeVoegenQuizOpdrachten.size() != 0) {
-			for (QuizOpdracht qO : toeTeVoegenQuizOpdrachten) {
-				quiz.getEenQuizOpdrachtLijst().add(qO);
-			}
+		
+		if(quizOpdrachten.size() > 0 && quizOpdrachten.stream().anyMatch(q -> q.compareTo(quizOpdracht) == 0))
+		{
+			throw new IllegalArgumentException(String.format("Quizopdracht %s is reeds gekoppeld aan quiz %s.", quizOpdracht, quiz));
 		}
+		
+		quizOpdrachten.add(quizOpdracht);
 	}
 
 	@Override
